@@ -9,11 +9,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    private let boardView = BoardView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        setupViews()
     }
 
-
+    private func setupViews() {
+        view.backgroundColor = .red
+        view.addSubview(boardView)
+    }
 }
 

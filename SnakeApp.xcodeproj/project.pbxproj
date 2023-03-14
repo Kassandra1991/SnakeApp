@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03A84B1429C086D600F6D813 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A84B1329C086D600F6D813 /* BoardView.swift */; };
 		03CA7ABD29BE555000DB47A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CA7ABC29BE555000DB47A6 /* AppDelegate.swift */; };
 		03CA7ABF29BE555000DB47A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CA7ABE29BE555000DB47A6 /* SceneDelegate.swift */; };
 		03CA7AC129BE555000DB47A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CA7AC029BE555000DB47A6 /* ViewController.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03A84B1329C086D600F6D813 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		03CA7AB929BE555000DB47A6 /* SnakeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnakeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03CA7ABC29BE555000DB47A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03CA7ABE29BE555000DB47A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,14 +56,55 @@
 		03CA7ABB29BE555000DB47A6 /* SnakeApp */ = {
 			isa = PBXGroup;
 			children = (
+				03CA7AD029BE594300DB47A6 /* Application */,
+				03CA7AD329BE5E1A00DB47A6 /* Models */,
+				03CA7AD429BE5E2400DB47A6 /* Views */,
+				03CA7AD229BE5DEB00DB47A6 /* Controllers */,
+				03CA7AD129BE595400DB47A6 /* SupportingFiles */,
+			);
+			path = SnakeApp;
+			sourceTree = "<group>";
+		};
+		03CA7AD029BE594300DB47A6 /* Application */ = {
+			isa = PBXGroup;
+			children = (
 				03CA7ABC29BE555000DB47A6 /* AppDelegate.swift */,
 				03CA7ABE29BE555000DB47A6 /* SceneDelegate.swift */,
-				03CA7AC029BE555000DB47A6 /* ViewController.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		03CA7AD129BE595400DB47A6 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
 				03CA7AC529BE555200DB47A6 /* Assets.xcassets */,
 				03CA7AC729BE555200DB47A6 /* LaunchScreen.storyboard */,
 				03CA7ACA29BE555200DB47A6 /* Info.plist */,
 			);
-			path = SnakeApp;
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		03CA7AD229BE5DEB00DB47A6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				03CA7AC029BE555000DB47A6 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		03CA7AD329BE5E1A00DB47A6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		03CA7AD429BE5E2400DB47A6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				03A84B1329C086D600F6D813 /* BoardView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03CA7AC129BE555000DB47A6 /* ViewController.swift in Sources */,
+				03A84B1429C086D600F6D813 /* BoardView.swift in Sources */,
 				03CA7ABD29BE555000DB47A6 /* AppDelegate.swift in Sources */,
 				03CA7ABF29BE555000DB47A6 /* SceneDelegate.swift in Sources */,
 			);
@@ -277,7 +321,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C5MJRPU929;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SnakeApp/Info.plist;
+				INFOPLIST_FILE = SnakeApp/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -304,7 +348,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C5MJRPU929;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SnakeApp/Info.plist;
+				INFOPLIST_FILE = SnakeApp/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
