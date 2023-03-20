@@ -14,7 +14,7 @@ class GameModel {
     private var addPointCol = 1
     private var addPointRow = 4
     
-    var snake: [SnakeCell] = []
+    private var snake: [SnakeCell] = []
     
     init() {
         snake.append(SnakeCell(col: GameModel.cols-1, row: 1))
@@ -30,7 +30,7 @@ class GameModel {
         return false
     }
 // MARK: - Randomize snake and Add Point
-    private func randomizeAddPoint() {
+    private private func randomizeAddPoint() {
         addPointCol = Int.random(in: 1..<GameModel.cols)
         addPointRow = Int.random(in: 1..<GameModel.rows)
         
@@ -40,7 +40,7 @@ class GameModel {
         }
     }
     
-    func updateSnakeAndAddPoint(newHead: SnakeCell) {
+    private func updateSnakeAndAddPoint(newHead: SnakeCell) {
         var newSnake: [SnakeCell] = []
         newSnake.append(newHead)
         for i in 0..<snake.count - 1 {
@@ -70,5 +70,13 @@ class GameModel {
     
     func moveDown() {
         updateSnakeAndAddPoint(newHead: SnakeCell(col: snake[0].col, row: snake[0].row - 1))
+    }
+    
+    func getSnake() -> [SnakeCell] {
+        return snake
+    }
+    
+    func getAddPoint() -> (col: Int, row: Int) {
+        return (addPointCol, addPointRow)
     }
 }

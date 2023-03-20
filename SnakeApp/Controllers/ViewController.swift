@@ -18,12 +18,15 @@ class ViewController: UIViewController {
         setupViews()
         setConstraints()
         addSwipe()
+        movingSnake()
     }
 
     private func setupViews() {
         view.backgroundColor = .white
         view.addSubview(boardView)
     }
+    
+    // MARK: - UISwipeGestureRecognizer
     
     private func addSwipe() {
         
@@ -39,21 +42,50 @@ class ViewController: UIViewController {
         switch sender.direction {
         case .left:
             movingDirection = .left
-            print("влево")
         case .right:
             movingDirection = .right
-            print("вправо")
         case .up:
             movingDirection = .up
-            print("вверх")
         case .down:
             movingDirection = .down
-            print("вниз")
         default:
             break
         }
     }
+    
+    // MARK: - MovingSnake
+    
+    private func movingSnake() {
+        Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { [weak self] _ in
+            guard let self = self else {
+                return
+            }
+            
+            switch self.movingDirection {
+                
+            case .left:
+                self.gameModel.moveLeft()
+            case .right:
+                self.gameModel.moveRight()
+            case .up:
+                self.gameModel.moveUp()
+            case .down:
+                self.gameModel.moveDown()
+            }
+            self.updateUI()
+        }
+    }
+    
+    private func updateUI() {
+        boardView.snake = gameModel.getSnake()
+        boardView.addPointRow = gameModel.getAddPoint().row
+        boardView.addPointCol = gameModel.getAddPoint().col
+        boardView.setNeedsDisplay()
+    }
+    
 }
+
+// MARK: - Constraints
 
 extension ViewController {
     private func setConstraints() {
