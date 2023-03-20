@@ -10,16 +10,48 @@ import UIKit
 class ViewController: UIViewController {
 
     private let boardView = BoardView()
+    private let gameModel = GameModel()
+    private var movingDirection: MovingDirection = .left
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setConstraints()
+        addSwipe()
     }
 
     private func setupViews() {
         view.backgroundColor = .white
         view.addSubview(boardView)
+    }
+    
+    private func addSwipe() {
+        
+        let directions: [UISwipeGestureRecognizer.Direction] = [.left, .up, .right, .down]
+        directions.forEach {
+            let swipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender: )))
+            swipe.direction = $0
+            view.addGestureRecognizer(swipe)
+        }
+    }
+    
+    @objc private func handleSwipe(sender: UISwipeGestureRecognizer) {
+        switch sender.direction {
+        case .left:
+            movingDirection = .left
+            print("влево")
+        case .right:
+            movingDirection = .right
+            print("вправо")
+        case .up:
+            movingDirection = .up
+            print("вверх")
+        case .down:
+            movingDirection = .down
+            print("вниз")
+        default:
+            break
+        }
     }
 }
 
