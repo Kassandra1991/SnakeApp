@@ -11,72 +11,62 @@ class GameModel {
     static let cols = 10
     static let rows = 20
     
-    private var addPointCol = 1
-    private var addPointRow = 4
+    private var snake: SnakeModel?
+    private var addPoint: AddPointModel?
     
-    private var snake: [SnakeCell] = []
+    init() {}
     
-    init() {
-        snake.append(SnakeCell(col: GameModel.cols-1, row: 1))
-        snake.append(SnakeCell(col: GameModel.cols, row: 1))
+    init(snake: SnakeModel, addPoint: AddPointModel) {
+        self.snake = snake
+        self.addPoint = addPoint
     }
     
     private func isOnSnake(col: Int, row: Int) -> Bool {
-        for cell in snake {
+        guard let snake = snake else {
+            return true
+        }
+        for cell in snake.snake {
             if cell.col == col && cell.row == row {
                 return true
             }
         }
         return false
     }
-// MARK: - Randomize snake and Add Point
-    private private func randomizeAddPoint() {
-        addPointCol = Int.random(in: 1..<GameModel.cols)
-        addPointRow = Int.random(in: 1..<GameModel.rows)
+    // MARK: - Randomize snake and Add Point
+    private func randomizeAddPoint() {
+        guard let addPoint else { return }
+        let col = addPoint.coordinate.col
+        let row = addPoint.coordinate.row
         
-        while isOnSnake(col: addPointCol, row: addPointRow) {
-            addPointCol = Int.random(in: 1..<GameModel.cols)
-            addPointRow = Int.random(in: 1..<GameModel.rows)
+        while isOnSnake(col: col, row: row) {
+            addPoint.randomizeAddPoint()
+        }
+    }
+    func checkEating() {
+        if snake?.snake[0].col == addPoint?.coordinate.col && snake?.snake[0].row == addPoint?.coordinate.row {
+            snake?.snakeEatAddPoint()
+            addPoint?.randomizeAddPoint()
         }
     }
     
-    private func updateSnakeAndAddPoint(newHead: SnakeCell) {
-        var newSnake: [SnakeCell] = []
-        newSnake.append(newHead)
-        for i in 0..<snake.count - 1 {
-            newSnake.append(snake[i])
+    func snakeIsOnBoard() -> Bool {
+        guard let snake else { return false }
+        if snake.snake[0].row < 0 || snake.snake[0].row > GameModel.rows - 1 ||
+            snake.snake[0].col < 0 || snake.snake[0].col > GameModel.cols - 1 {
+            return false
         }
-        let oldTail = snake[snake.count-1]
-        if snake[0].col == addPointCol && snake[0].row == addPointRow {
-            newSnake.append(oldTail)
-            randomizeAddPoint()
+        return true
+    }
+    
+    func crushTest() -> Bool {
+        guard let snake else { return false }
+        var snakeWithoutHead = snake.snake
+        snakeWithoutHead.removeFirst()
+        let head = snake.snake[0]
+        if snakeWithoutHead.contains(where: { $0.col == head.col && $0.row == head.row
+        }) {
+            return false
         }
-        snake = newSnake
-    }
-    
-    // MARK: - Update moving snake
-    
-    func moveLeft() {
-        updateSnakeAndAddPoint(newHead: SnakeCell(col: snake[0].col - 1, row: snake[0].row))
-    }
-    
-    func moveRight() {
-        updateSnakeAndAddPoint(newHead: SnakeCell(col: snake[0].col + 1, row: snake[0].row))
-    }
-    
-    func moveUp() {
-        updateSnakeAndAddPoint(newHead: SnakeCell(col: snake[0].col, row: snake[0].row + 1))
-    }
-    
-    func moveDown() {
-        updateSnakeAndAddPoint(newHead: SnakeCell(col: snake[0].col, row: snake[0].row - 1))
-    }
-    
-    func getSnake() -> [SnakeCell] {
-        return snake
-    }
-    
-    func getAddPoint() -> (col: Int, row: Int) {
-        return (addPointCol, addPointRow)
+        return true
     }
 }

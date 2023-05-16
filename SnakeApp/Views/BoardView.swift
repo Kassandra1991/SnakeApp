@@ -13,9 +13,8 @@ class BoardView: UIView {
     private let originY: CGFloat = 0.0
     private var cellSide: CGFloat = 0.0
     
-    var snake: [SnakeCell] = []
-    var addPointCol = 1
-    var addPointRow = 4
+    var snake: SnakeModel?
+    var addPoint: AddPointModel?
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -36,8 +35,8 @@ class BoardView: UIView {
     
     override func draw(_ rect: CGRect) {
         drawGrid()
-        drawSnake()
         drawAddPoint()
+        drawSnake()
     }
     
     private func drawGrid() {
@@ -59,22 +58,23 @@ class BoardView: UIView {
     }
     
     private func drawSnake() {
-        guard !snake.isEmpty, let snakeHead = snake.first else {
+        guard let snake, !snake.snake.isEmpty, let snakeHead = snake.snake.first else {
             return
         }
         SnakeColor.snakeHead.setFill()
         UIBezierPath(roundedRect: CGRect(x: originX + cellSide * CGFloat(snakeHead.col), y: originY + cellSide * CGFloat(snakeHead.row), width: cellSide, height: cellSide), cornerRadius: 3).fill()
         
         SnakeColor.snakeBody.setFill()
-        for i in 1..<snake.count {
-            let cell = snake[i]
+        for i in 1..<snake.snake.count {
+            let cell = snake.snake[i]
             
             UIBezierPath(roundedRect: CGRect(x: originX + cellSide * CGFloat(cell.col), y: originY + cellSide * CGFloat(cell.row), width: cellSide, height: cellSide), cornerRadius: 3).fill()
         }
     }
     
     private func drawAddPoint() {
+        guard let addPoint else { return }
         SnakeColor.addPoint.setFill()
-        UIBezierPath(roundedRect: CGRect(x: originX + cellSide * CGFloat(addPointCol), y: originY + cellSide * CGFloat(addPointRow), width: cellSide, height: cellSide), cornerRadius: 3).fill()
+        UIBezierPath(roundedRect: CGRect(x: originX + cellSide * CGFloat(addPoint.coordinate.col), y: originY + cellSide * CGFloat(addPoint.coordinate.row), width: cellSide, height: cellSide), cornerRadius: 3).fill()
     }
 }
