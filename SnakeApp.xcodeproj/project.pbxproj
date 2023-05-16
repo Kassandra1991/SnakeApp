@@ -19,6 +19,7 @@
 		03CA7AC129BE555000DB47A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CA7AC029BE555000DB47A6 /* ViewController.swift */; };
 		03CA7AC629BE555200DB47A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03CA7AC529BE555200DB47A6 /* Assets.xcassets */; };
 		03CA7AC929BE555200DB47A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03CA7AC729BE555200DB47A6 /* LaunchScreen.storyboard */; };
+		03EC68952A138D0900DD078F /* JoystikView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC68942A138D0900DD078F /* JoystikView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		03CA7AC529BE555200DB47A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03CA7AC829BE555200DB47A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03CA7ACA29BE555200DB47A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03EC68942A138D0900DD078F /* JoystikView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystikView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				03A84B1329C086D600F6D813 /* BoardView.swift */,
+				03EC68942A138D0900DD078F /* JoystikView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				03CA7AC129BE555000DB47A6 /* ViewController.swift in Sources */,
 				03A84B1429C086D600F6D813 /* BoardView.swift in Sources */,
 				03A84B1829C092C100F6D813 /* Resources.swift in Sources */,
+				03EC68952A138D0900DD078F /* JoystikView.swift in Sources */,
 				03AFA91829CA230E0062B7AE /* SnakeModel.swift in Sources */,
 				03CA7ABD29BE555000DB47A6 /* AppDelegate.swift in Sources */,
 				0357989A29C859F70067128F /* MovingModel.swift in Sources */,

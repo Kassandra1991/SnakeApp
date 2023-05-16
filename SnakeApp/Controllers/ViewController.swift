@@ -11,6 +11,7 @@ class ViewController: UIViewController {
 
     private let boardView = BoardView()
     private var gameModel = GameModel()
+    private let joystikView = JoystikView()
     private let snakeModel = SnakeModel()
     private let addPointModel = AddPointModel()
     
@@ -27,6 +28,7 @@ class ViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = .white
         view.addSubview(boardView)
+        view.addSubview(joystikView)
         gameModel = GameModel(snake: snakeModel, addPoint: addPointModel)
     }
     
@@ -38,7 +40,7 @@ class ViewController: UIViewController {
         directions.forEach {
             let swipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender: )))
             swipe.direction = $0
-            view.addGestureRecognizer(swipe)
+            boardView.addGestureRecognizer(swipe)
         }
     }
     
@@ -96,7 +98,12 @@ extension ViewController {
             boardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             boardView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             boardView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            boardView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
+            boardView.heightAnchor.constraint(equalTo: boardView.widthAnchor, multiplier: 1.0),
+            
+            joystikView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200.0),
+            joystikView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            joystikView.heightAnchor.constraint(equalToConstant: 100.0),
+            joystikView.widthAnchor.constraint(equalToConstant: 100.0)
         ])
     }
 }

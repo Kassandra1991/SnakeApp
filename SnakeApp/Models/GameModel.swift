@@ -9,7 +9,7 @@ import Foundation
 
 class GameModel {
     static let cols = 10
-    static let rows = 20
+    static let rows = 10
     
     private var snake: SnakeModel?
     private var addPoint: AddPointModel?
