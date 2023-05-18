@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     private let addPointModel = AddPointModel()
     
     private var timer = Timer()
+    private var direction: MovingDirection = .left
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,22 +48,14 @@ class ViewController: UIViewController {
     
     @objc private func handleSwipe(sender: UISwipeGestureRecognizer) {
         switch sender.direction {
-        case .left:
-            if snakeModel.movingDirection != .right {
-                snakeModel.movingDirection = .left
-            }
-        case .right:
-            if snakeModel.movingDirection != .left {
-                snakeModel.movingDirection = .right
-            } 
-        case .up:
-            if snakeModel.movingDirection != .down {
-                snakeModel.movingDirection = .up
-            }
         case .down:
-            if snakeModel.movingDirection != .up {
-                snakeModel.movingDirection = .down
-            }
+            direction = .down
+        case .right:
+            direction = .right
+        case .left:
+            direction = .left
+        case .up:
+            direction = .up
         default:
             break
         }
@@ -76,6 +69,7 @@ class ViewController: UIViewController {
     
     @objc private func timerAction() {
         gameModel.checkEating()
+        snakeModel.checkDirection(direction)
         snakeModel.moveSnake()
         if !gameModel.snakeIsOnBoard() || !gameModel.crushTest() {
             timer.invalidate()
@@ -95,10 +89,8 @@ class ViewController: UIViewController {
 
 extension ViewController: JoustikProtocol {
     func changeDirection(_ direction: MovingDirection) {
-        print(direction)
+        self.direction = direction
     }
-    
-    
 }
 
 
