@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol JoustikProtocol: AnyObject {
+    func changeDirection(_ direction: MovingDirection)
+}
+
 class JoystikView: UIView {
+    
+    weak var delegate: JoustikProtocol?
+    
     private var centerView = UIView()
     
     private let triangleDown = [(x: -50.0, y: -50.0),(x: 0.0, y: 0.0), (x: 50.0, y: -50.0)]
@@ -50,7 +57,7 @@ class JoystikView: UIView {
             
             if directionJoystik != direction {
                 direction = directionJoystik
-                print(direction)
+                self.delegate?.changeDirection(direction)
             }
         }
     }

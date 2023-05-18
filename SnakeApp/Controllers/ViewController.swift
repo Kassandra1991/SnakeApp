@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         view.addSubview(boardView)
         view.addSubview(joystikView)
         gameModel = GameModel(snake: snakeModel, addPoint: addPointModel)
+        joystikView.delegate = self
     }
     
     // MARK: - UISwipeGestureRecognizer
@@ -89,6 +90,17 @@ class ViewController: UIViewController {
     }
     
 }
+
+// MARK: - JoustikProtocol
+
+extension ViewController: JoustikProtocol {
+    func changeDirection(_ direction: MovingDirection) {
+        print(direction)
+    }
+    
+    
+}
+
 
 // MARK: - Constraints
 
