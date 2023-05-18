@@ -13,7 +13,7 @@ class BoardView: UIView {
     private let originY: CGFloat = 0.0
     private var cellSide: CGFloat = 0.0
     
-    var snake: SnakeModel?
+    var snake: [SnakeCell]?
     var addPoint: CGPoint?
     
     override func layoutSubviews() {
@@ -58,15 +58,15 @@ class BoardView: UIView {
     }
     
     private func drawSnake() {
-        guard let snake, !snake.snake.isEmpty, let snakeHead = snake.snake.first else {
+        guard let snake, !snake.isEmpty, let snakeHead = snake.first else {
             return
         }
         SnakeColor.snakeHead.setFill()
         UIBezierPath(roundedRect: CGRect(x: originX + cellSide * CGFloat(snakeHead.col), y: originY + cellSide * CGFloat(snakeHead.row), width: cellSide, height: cellSide), cornerRadius: 3).fill()
         
         SnakeColor.snakeBody.setFill()
-        for i in 1..<snake.snake.count {
-            let cell = snake.snake[i]
+        for i in 1..<snake.count {
+            let cell = snake[i]
             
             UIBezierPath(roundedRect: CGRect(x: originX + cellSide * CGFloat(cell.col), y: originY + cellSide * CGFloat(cell.row), width: cellSide, height: cellSide), cornerRadius: 3).fill()
         }
