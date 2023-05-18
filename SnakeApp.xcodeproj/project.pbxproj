@@ -20,6 +20,7 @@
 		03CA7AC629BE555200DB47A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03CA7AC529BE555200DB47A6 /* Assets.xcassets */; };
 		03CA7AC929BE555200DB47A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03CA7AC729BE555200DB47A6 /* LaunchScreen.storyboard */; };
 		03EC68952A138D0900DD078F /* JoystikView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC68942A138D0900DD078F /* JoystikView.swift */; };
+		03EC68972A16482F00DD078F /* ControlModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC68962A16482F00DD078F /* ControlModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		03CA7AC829BE555200DB47A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03CA7ACA29BE555200DB47A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03EC68942A138D0900DD078F /* JoystikView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystikView.swift; sourceTree = "<group>"; };
+		03EC68962A16482F00DD078F /* ControlModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		03CA7AD329BE5E1A00DB47A6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				03EC68962A16482F00DD078F /* ControlModel.swift */,
 				03A84B1529C08CE900F6D813 /* GameModel.swift */,
 				03A84B1929C0B41000F6D813 /* SnakeCell.swift */,
 				0357989929C859F70067128F /* MovingModel.swift */,
@@ -205,6 +208,7 @@
 				03A84B1829C092C100F6D813 /* Resources.swift in Sources */,
 				03EC68952A138D0900DD078F /* JoystikView.swift in Sources */,
 				03AFA91829CA230E0062B7AE /* SnakeModel.swift in Sources */,
+				03EC68972A16482F00DD078F /* ControlModel.swift in Sources */,
 				03CA7ABD29BE555000DB47A6 /* AppDelegate.swift in Sources */,
 				0357989A29C859F70067128F /* MovingModel.swift in Sources */,
 				03A84B1A29C0B41000F6D813 /* SnakeCell.swift in Sources */,

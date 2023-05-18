@@ -17,10 +17,14 @@ class JoystikView: UIView {
     
     private var centerView = UIView()
     
-    private let triangleDown = [(x: -50.0, y: -50.0),(x: 0.0, y: 0.0), (x: 50.0, y: -50.0)]
-    private let triangleLeft = [(x: -50.0, y: 50.0),(x: 0.0, y: 0.0), (x: -50.0, y: -50.0)]
-    private let triangleRight = [(x: 50.0, y: 50.0),(x: 0.0, y: 0.0), (x: 50.0, y: -50.0)]
-    private let triangleUp = [(x: -50.0, y: 50.0),(x: 0.0, y: 0.0), (x: 50.0, y: 50.0)]
+    private let triangleDown =
+    [CGPoint(x: -50.0, y: -50.0),CGPoint(x: 0.0, y: 0.0), CGPoint(x: 50.0, y: -50.0)]
+    private let triangleLeft =
+    [CGPoint(x: -50.0, y: 50.0), CGPoint(x: 0.0, y: 0.0), CGPoint(x: -50.0, y: -50.0)]
+    private let triangleRight =
+    [CGPoint(x: 50.0, y: 50.0), CGPoint(x: 0.0, y: 0.0), CGPoint(x: 50.0, y: -50.0)]
+    private let triangleUp =
+    [CGPoint(x: -50.0, y: 50.0), CGPoint(x: 0.0, y: 0.0), CGPoint(x: 50.0, y: 50.0)]
     
     private var direction: MovingDirection = .left
     
@@ -62,7 +66,7 @@ class JoystikView: UIView {
                 centerView.center = location
             }
             
-            let point = (x: Double(location.x - 50), y: Double(50 - location.y))
+            let point = CGPoint(x: location.x - 50, y: 50 - location.y)
             let directionJoystik = defineDirection(point: point)
             
             if directionJoystik != direction {
@@ -76,7 +80,7 @@ class JoystikView: UIView {
         centerView.frame.origin = CGPoint(x: 0, y: 0)
     }
     
-    private func defineDirection(point: (x: Double, y: Double)) -> MovingDirection {
+    private func defineDirection(point: CGPoint) -> MovingDirection {
         if isPointInsideTriangle(point, triangleDown) {
             return .down
         }
@@ -92,7 +96,7 @@ class JoystikView: UIView {
         return direction
     }
     
-    private func isPointInsideTriangle(_ point: (x: Double, y: Double), _ triangle: [(x: Double, y: Double)]) -> Bool {
+    private func isPointInsideTriangle(_ point: CGPoint, _ triangle: [CGPoint]) -> Bool {
         let x1 = triangle[0].x
         let y1 = triangle[0].y
         let x2 = triangle[1].x
