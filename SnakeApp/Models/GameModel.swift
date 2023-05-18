@@ -33,19 +33,15 @@ class GameModel {
         return false
     }
     // MARK: - Randomize snake and Add Point
-    private func randomizeAddPoint() {
-        guard let addPoint else { return }
-        let col = addPoint.coordinate.col
-        let row = addPoint.coordinate.row
-        
-        while isOnSnake(col: col, row: row) {
-            addPoint.randomizeAddPoint()
-        }
-    }
+
     func checkEating() {
-        if snake?.snake[0].col == addPoint?.coordinate.col && snake?.snake[0].row == addPoint?.coordinate.row {
-            snake?.snakeEatAddPoint()
-            addPoint?.randomizeAddPoint()
+        guard let snake, let addPoint else {return}
+        if snake.snake[0].col == addPoint.coordinate.col && snake.snake[0].row == addPoint.coordinate.row {
+            snake.snakeEatAddPoint()
+            addPoint.randomizeAddPoint()
+            while isOnSnake(col: addPoint.coordinate.col, row: addPoint.coordinate.row) {
+                addPoint.randomizeAddPoint()
+            }
         }
     }
     
