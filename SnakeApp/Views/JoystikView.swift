@@ -44,6 +44,16 @@ class JoystikView: UIView {
         addSubview(centerView)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let location = touch.location(in: self)
+            
+            if bounds.contains(location) {
+                centerView.center = location
+            }
+        }
+    }
+    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let location = touch.location(in: self)
@@ -60,6 +70,10 @@ class JoystikView: UIView {
                 self.delegate?.changeDirection(direction)
             }
         }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        centerView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
     }
     
     private func defineDirection(point: (x: Double, y: Double)) -> MovingDirection {
