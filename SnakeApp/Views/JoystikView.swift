@@ -73,7 +73,7 @@ class JoystikView: UIView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        centerView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        centerView.frame.origin = CGPoint(x: 0, y: 0)
     }
     
     private func defineDirection(point: (x: Double, y: Double)) -> MovingDirection {

@@ -79,7 +79,7 @@ class ViewController: UIViewController {
     
     private func updateUI() {
         boardView.snake = snakeModel
-        boardView.addPoint = addPointModel
+        boardView.addPoint = CGPoint(x: addPointModel.coordinate.col, y: addPointModel.coordinate.row)
         boardView.setNeedsDisplay()
     }
     
