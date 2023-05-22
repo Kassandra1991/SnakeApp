@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol BoardProtocol: AnyObject {
+    func swipeGesture(direction: UISwipeGestureRecognizer.Direction)
+}
+
 class BoardView: UIView {
+    
+    weak var delegate: BoardProtocol?
     
     private let originX: CGFloat = 0.0
     private let originY: CGFloat = 0.0
@@ -37,7 +43,26 @@ class BoardView: UIView {
         drawGrid()
         drawAddPoint()
         drawSnake()
+        addSwipe()
     }
+    
+    // MARK: - UISwipeGestureRecognizer
+    
+    private func addSwipe() {
+        
+        let directions: [UISwipeGestureRecognizer.Direction] = [.left, .up, .right, .down]
+        directions.forEach {
+            let swipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender: )))
+            swipe.direction = $0
+            addGestureRecognizer(swipe)
+        }
+    }
+    
+    @objc private func handleSwipe(sender: UISwipeGestureRecognizer) {
+        delegate?.swipeGesture(direction: sender.direction)
+    }
+    
+    // MARK: - drawGrid
     
     private func drawGrid() {
         let gridPath = UIBezierPath()

@@ -53,14 +53,12 @@ class ControlModel {
         return areaTriangle == areaTringleFirst + areaTringleSecond + areaTringleThird
     }
     
-    func changeDirection(_ point: CGPoint) -> MovingDirection? {
+    func changeDirection(_ point: CGPoint) {
         let directionJoystik = defineDirection(point: point)
         
         if directionJoystik != direction {
             direction = directionJoystik
-            return direction
         }
-        return nil
     }
 }
 
