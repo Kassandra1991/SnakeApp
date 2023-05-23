@@ -11,6 +11,8 @@ class MainView: UIView {
     
     let boardView = BoardView()
     let joystikView = JoystikView()
+    let scoreLabel = UILabel()
+    let nextLevelLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,6 +21,8 @@ class MainView: UIView {
         
         configureBoardView()
         configureJoystikView()
+        configureScoreLabel()
+        configureNextLevelLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -42,6 +46,24 @@ class MainView: UIView {
             joystikView.centerXAnchor.constraint(equalTo: centerXAnchor),
             joystikView.heightAnchor.constraint(equalToConstant: 100.0),
             joystikView.widthAnchor.constraint(equalToConstant: 100.0)
+        ])
+    }
+    private func configureScoreLabel() {
+        addSubview(scoreLabel)
+        scoreLabel.text = "Score: 10"
+        scoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scoreLabel.topAnchor.constraint(equalTo: boardView.bottomAnchor, constant: 10.0),
+            scoreLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.0)
+        ])
+    }
+    private func configureNextLevelLabel() {
+        addSubview(nextLevelLabel)
+        nextLevelLabel.text = "Level: 3"
+        nextLevelLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            nextLevelLabel.topAnchor.constraint(equalTo: boardView.bottomAnchor, constant: 10.0),
+            nextLevelLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10.0)
         ])
     }
 }

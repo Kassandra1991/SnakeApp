@@ -59,6 +59,8 @@ class MainViewController: UIViewController {
     private func updateUI() {
         mainView.boardView.snake = snakeModel.snake
         mainView.boardView.addPoint = CGPoint(x: addPointModel.coordinate.col, y: addPointModel.coordinate.row)
+        mainView.scoreLabel.text = gameModel.gameScore.score
+        mainView.nextLevelLabel.text = gameModel.gameScore.level
         mainView.boardView.setNeedsDisplay()
     }
 }
