@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     private let addPointModel = AddPointModel()
     private let controlModel = ControlModel()
     
-    private var timer = Timer()
+    private let timer = TimerModel()
  
     // MARK: - LifeCycle
     
@@ -30,35 +30,20 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         gameModel = GameModel(snake: snakeModel, addPoint: addPointModel)
         setDelegates()
-        startTimer()
+        timer.startTimer()
     }
 
     private func setDelegates() {
         mainView.joystikView.delegate = self
         mainView.boardView.delegate = self
+        timer.delegate = self
+        
     }
-    
-    // MARK: - MovingSnake
-    
-    private func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
-    }
-    
-    // MARK: - TimerAction
-    
-    @objc private func timerAction() {
-        gameModel.checkEating()
-        snakeModel.checkDirection(controlModel.direction)
-        snakeModel.moveSnake()
-        if !gameModel.snakeIsOnBoard() || !gameModel.crushTest() {
-            timer.invalidate()
-        }
-        updateUI()
-    }
-    
+
     private func updateUI() {
         mainView.boardView.snake = snakeModel.snake
-        mainView.boardView.addPoint = CGPoint(x: addPointModel.coordinate.col, y: addPointModel.coordinate.row)
+        mainView.boardView.addPoint = CGPoint(x: addPointModel.coordinate.col,
+                                              y: addPointModel.coordinate.row)
         mainView.scoreLabel.text = gameModel.gameScore.score
         mainView.nextLevelLabel.text = gameModel.gameScore.level
         mainView.boardView.setNeedsDisplay()
@@ -89,5 +74,19 @@ extension MainViewController: BoardProtocol {
         default:
             break
         }
+    }
+}
+
+// MARK: - TimerProtocol
+
+extension MainViewController: TimerProtocol {
+    func timerAction() {
+        gameModel.checkEating()
+        snakeModel.checkDirection(controlModel.direction)
+        snakeModel.moveSnake()
+        if !gameModel.snakeIsOnBoard() || !gameModel.crushTest() {
+            timer.stopTimer()
+        }
+        updateUI()
     }
 }

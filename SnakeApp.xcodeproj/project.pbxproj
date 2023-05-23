@@ -15,6 +15,7 @@
 		03AFA91829CA230E0062B7AE /* SnakeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFA91729CA230E0062B7AE /* SnakeModel.swift */; };
 		03AFA91A29CA28970062B7AE /* AddPointModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFA91929CA28970062B7AE /* AddPointModel.swift */; };
 		03B2B54B2A1B76C2002E3233 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2B54A2A1B76C2002E3233 /* MainView.swift */; };
+		03B2B54D2A1D16A2002E3233 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2B54C2A1D16A2002E3233 /* TimerModel.swift */; };
 		03CA7ABD29BE555000DB47A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CA7ABC29BE555000DB47A6 /* AppDelegate.swift */; };
 		03CA7ABF29BE555000DB47A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CA7ABE29BE555000DB47A6 /* SceneDelegate.swift */; };
 		03CA7AC129BE555000DB47A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CA7AC029BE555000DB47A6 /* MainViewController.swift */; };
@@ -33,6 +34,7 @@
 		03AFA91729CA230E0062B7AE /* SnakeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeModel.swift; sourceTree = "<group>"; };
 		03AFA91929CA28970062B7AE /* AddPointModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPointModel.swift; sourceTree = "<group>"; };
 		03B2B54A2A1B76C2002E3233 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		03B2B54C2A1D16A2002E3233 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		03CA7AB929BE555000DB47A6 /* SnakeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnakeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03CA7ABC29BE555000DB47A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03CA7ABE29BE555000DB47A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				0357989929C859F70067128F /* MovingModel.swift */,
 				03AFA91729CA230E0062B7AE /* SnakeModel.swift */,
 				03AFA91929CA28970062B7AE /* AddPointModel.swift */,
+				03B2B54C2A1D16A2002E3233 /* TimerModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				03EC68972A16482F00DD078F /* ControlModel.swift in Sources */,
 				03CA7ABD29BE555000DB47A6 /* AppDelegate.swift in Sources */,
 				0357989A29C859F70067128F /* MovingModel.swift in Sources */,
+				03B2B54D2A1D16A2002E3233 /* TimerModel.swift in Sources */,
 				03A84B1A29C0B41000F6D813 /* SnakeCell.swift in Sources */,
 				03CA7ABF29BE555000DB47A6 /* SceneDelegate.swift in Sources */,
 			);
