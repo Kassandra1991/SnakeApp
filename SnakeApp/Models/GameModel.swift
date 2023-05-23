@@ -15,7 +15,7 @@ class GameModel {
     private var addPoint: AddPointModel?
     
     private var score = 0
-    private var level = 2
+    private var level = 3
     
     var gameScore: (score: String, level: String) {
         let score = "Score: \(score)"
@@ -43,7 +43,7 @@ class GameModel {
     }
     // MARK: - Randomize snake and Add Point
 
-    func checkEating() {
+    private func checkEating() {
         guard let snake, let addPoint else {return}
         if snake.snake[0].col == addPoint.coordinate.col &&
             snake.snake[0].row == addPoint.coordinate.row {
@@ -55,6 +55,15 @@ class GameModel {
                 addPoint.randomizeAddPoint()
             }
         }
+    }
+    
+    func checkNextLevel() -> Bool {
+        checkEating()
+        if level == 0 {
+            level = 3
+            return true
+        }
+        return false
     }
     
     func snakeIsOnBoard() -> Bool {

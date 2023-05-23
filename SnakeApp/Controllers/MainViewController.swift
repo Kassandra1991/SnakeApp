@@ -81,9 +81,11 @@ extension MainViewController: BoardProtocol {
 
 extension MainViewController: TimerProtocol {
     func timerAction() {
-        gameModel.checkEating()
         snakeModel.checkDirection(controlModel.direction)
         snakeModel.moveSnake()
+        if gameModel.checkNextLevel() {
+            timer.speedIncrease()
+        }
         if !gameModel.snakeIsOnBoard() || !gameModel.crushTest() {
             timer.stopTimer()
         }

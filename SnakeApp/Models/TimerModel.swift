@@ -30,4 +30,10 @@ class TimerModel {
     func stopTimer() {
         timer.invalidate()
     }
+    
+    func speedIncrease() {
+        stopTimer()
+        timerInterval -= 0.1
+        startTimer()
+    }
 }

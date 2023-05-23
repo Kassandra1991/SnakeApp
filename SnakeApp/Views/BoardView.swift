@@ -33,6 +33,8 @@ class BoardView: UIView {
             
         backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
+        
+        addSwipe()
     }
     
     required init?(coder: NSCoder) {
@@ -43,7 +45,6 @@ class BoardView: UIView {
         drawGrid()
         drawAddPoint()
         drawSnake()
-        addSwipe()
     }
     
     // MARK: - UISwipeGestureRecognizer
